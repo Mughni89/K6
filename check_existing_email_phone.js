@@ -1,6 +1,9 @@
 import http from 'k6/http';
 import { check } from 'k6';
 
+const randomEmail = `test${Math.random()}@mail.com`;
+const randomPhone = `62812${Math.floor(Math.random()*10000000)}`;
+
 export let options = {
   vus: 10,          // jumlah user virtual
   duration: '10s',  // durasi test
@@ -10,8 +13,8 @@ export default function () {
   const url = 'https://cbi-api.suitdev.com/v2/auth/check_existing_email_phone';
 
   const payload = JSON.stringify({
-    email: 'qazz@yopmail.com',
-    phone: '62812451362',
+    email: randomEmail,
+    phone: randomPhone,
   });
 
   const params = {
